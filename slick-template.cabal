@@ -1,0 +1,54 @@
+cabal-version: 2.2
+
+name: slick-template
+version: 0.1.0.0
+synopsis: My site built with slick!
+description: My slick Site
+author: Me
+maintainer: example@example.com
+copyright: 20XX Me
+category: Slick-Site
+license: BSD-3-Clause
+license-file: LICENSE
+build-type: Simple
+homepage: https://github.com/Me/my-site#readme
+bug-reports: https://github.com/Me/my-site/issues
+extra-source-files:
+  README.md
+  ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/Me/my-site
+
+common lang
+  default-language: Haskell2010
+  ghc-options:
+    -fwarn-tabs
+    -rtsopts -with-rtsopts=-N
+    -threaded
+    -Wall
+    -Wcompat
+    -- -Werror  -- Around the time of lts-12.11 (ghc >= 8.4.3), this is no longer recommended
+    -Wincomplete-record-updates
+    -Wpartial-fields
+    -Wredundant-constraints
+
+executable build-site
+  import: lang
+  main-is: Main.hs
+  other-modules:
+      Paths_slick_template
+  hs-source-dirs:
+      app
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , containers
+    , lens
+    , lens-aeson
+    , shake
+    , slick
+    , text
+    , time
+    , unordered-containers
